@@ -18,8 +18,10 @@ if (!$form->getWidget('template')->isEmpty())
 	{
 		$form->getWidget('code')->setValues($this->getTemplate($form->getWidget('template')->getValue()));
 	}
-	
-	
+}
+else
+{
+			$form->getWidget('code')->setValues('{$slot_content}');
 }
 
 if ($form->isPosted())

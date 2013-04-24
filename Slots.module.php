@@ -14,7 +14,7 @@ class Slots extends CMSModule
 	
 	public function GetName()								{	return 'Slots';	 }
 	public function GetFriendlyName()				{	return 'Slots';  }
-	public function GetVersion()           	{ return '0.1.1'; }
+	public function GetVersion()           	{ return '1.0.0'; }
 	public function GetAuthor()            	{ return 'Jean-Christophe Cuvelier'; }
 	public function GetAuthorEmail()       	{ return 'cybertotophe@gmail.com'; }
 	public function HasAdmin()             	{ return true; }
@@ -30,6 +30,7 @@ class Slots extends CMSModule
     $this->RegisterModulePlugin();
 	//			$this->smarty->register_function('Slot',  array('CMSUsers','retrieveUser'));
 		$this->smarty->register_block('SlotCapture', array('Slots','SlotCapture'));
+		$this->smarty->register_block('SlotExecute', array('Slots','SlotExecute'));
 	}
 	
 	public function SlotCapture($params,$content,$template,&$repeat)
@@ -57,6 +58,22 @@ class Slots extends CMSModule
 				}
 		  }
 	  }
+	}
+	
+	public function SlotExecute($params,$content,$template,&$repeat)
+	{
+		if(!$repeat){
+			if(isset($content)){
+				if(self::checkContent($content)){
+					$module = cms_utils::get_module('Slots');
+					
+					$module->smarty->assign('slot_content_array', array($content));
+					$module->smarty->assign('slot_content', $content);
+					$module->smarty->assign('slot_params', $params);
+					return $module->ProcessTemplateFor('default', $params);
+				}									
+			}
+		}
 	}
 	
 	public static function checkContent($content)

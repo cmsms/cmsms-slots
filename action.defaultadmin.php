@@ -1,5 +1,5 @@
 <?php
-if (!isset($gCms)) exit;
+if (!cmsms()) exit;
 
 if (!$this->CheckAccess('Manage Slots')) {
 	return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
@@ -12,8 +12,8 @@ $templates = array();
 foreach($list_templates as $template) {
 	$row = array(
 		'titlelink' => $this->CreateLink($id, 'template_edit', $returnid, $template, array('template' => $template), '', false, false, 'class="itemlink"'),
-		'deletelink' => $this->CreateLink($id, 'template_delete', $returnid, $gCms->variables['admintheme']->DisplayImage('icons/system/delete.gif', $this->Lang('delete'), '', '', 'systemicon'), array('template' => $template), $this->lang('are you sure you want to delete this template')),
-		'editlink' => $this->CreateLink($id, 'template_edit', $returnid, $gCms->variables['admintheme']->DisplayImage('icons/system/edit.gif', $template, '', '', 'systemicon'), array('template' => $template))
+		'deletelink' => $this->CreateLink($id, 'template_delete', $returnid, cmsms()->variables['admintheme']->DisplayImage('icons/system/delete.gif', $this->Lang('delete'), '', '', 'systemicon'), array('template' => $template), $this->lang('are you sure you want to delete this template')),
+		'editlink' => $this->CreateLink($id, 'template_edit', $returnid, cmsms()->variables['admintheme']->DisplayImage('icons/system/edit.gif', $template, '', '', 'systemicon'), array('template' => $template))
 	);
 	
 	$templates[] = $row;
