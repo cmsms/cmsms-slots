@@ -14,7 +14,7 @@ class Slots extends CMSModule
 	
 	public function GetName()								{	return 'Slots';	 }
 	public function GetFriendlyName()				{	return 'Slots';  }
-	public function GetVersion()           	{ return '1.0.0'; }
+	public function GetVersion()           	{ return '1.0.2'; }
 	public function GetAuthor()            	{ return 'Jean-Christophe Cuvelier'; }
 	public function GetAuthorEmail()       	{ return 'jcc@atomseeds.com'; }
 	public function HasAdmin()             	{ return true; }
