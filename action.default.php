@@ -17,3 +17,10 @@ if (count($content) > 0)
 	$this->smarty->assign('slot_params', $params);
 	echo $this->ProcessTemplateFor('default', $params);	
 }
+elseif(isset($params['default']))
+{
+	$this->smarty->assign('slot_content_array', array($params['default']));
+	$this->smarty->assign('slot_content', $params['default']);
+	$this->smarty->assign('slot_params', $params);
+	echo $this->ProcessTemplateFor('default', $params);
+}

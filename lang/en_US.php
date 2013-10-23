@@ -13,6 +13,9 @@ $lang = array(
 	'help' => '
 	<h4>Usage of Slots</h4>
 	<p>Use {SlotCapture name="name of your slot"}The content you want to capture{/SlotCapture} to capture some content (could be a module of course)</p>
+	<ul>
+		<li><strong>default</strong> <em>(optional)</em> You can give a default value to output it if the slot don\'t have content.</li>
+	</ul>
 	<p>Use {Slots name="name of your slot"} to show the slot (it only output something if it have something to show). You can also use the param template to specify the template to use.</p>
 	<p>Use {Slots action="has_content" name="name of your slot"} to set the var {$SlotHasContent} to 1 if the slot has content or 0 if not.</p>
 	<p>Use {SlotExecute template="mytemplate" var1="whatever"}The content of what you want to execute{/SlotCapture} to directly execute the content within a specified slot template. Template is only executed if the captured content contain something.</p>
